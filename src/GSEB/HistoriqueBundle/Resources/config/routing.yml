@@ -1,0 +1,7 @@
+gseb_historique_homepage:
+    path:     /history
+    defaults: { _controller: GSEBHistoriqueBundle:History:index }
+
+gseb_historique_view:
+    path:     /history/{id}
+    defaults: { _controller: GSEBHistoriqueBundle:History:view }

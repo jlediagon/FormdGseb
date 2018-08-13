@@ -1,0 +1,4 @@
+services:
+#    gseb_historique.example:
+#        class: GSEB\HistoriqueBundle\Example
+#        arguments: ["@service_id", "plain_value", "%parameter%"]

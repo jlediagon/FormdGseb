@@ -1,0 +1,37 @@
+gseb_platform_homepage:
+    path:     /
+    defaults: 
+        _controller: GSEBPlatformBundle:Action:accueil 
+
+gseb_platform_homeaction:
+    path:     /{action}
+    defaults: 
+        _controller: GSEBPlatformBundle:Action:index 
+    requirements:
+        action: add|edit|delete
+
+gseb_platform_demande:
+    path:     /demande/{id_demande}
+    defaults: { _controller: GSEBPlatformBundle:Demande:listSalle }
+    requirements:
+        id_demande: \d+
+
+gseb_platform_demande_baie:
+    path:     /demande/salle/{id_salle}
+    defaults: { _controller: GSEBPlatformBundle:Demande:listBaie }
+
+gseb_platform_demande_objtype:
+    path:     /demande/baie/{id_baie}
+    defaults: { _controller: GSEBPlatformBundle:Demande:listObject }
+
+gseb_platform_demande_properties:
+    path:     /demande/object/{id_objtype}
+    defaults: { _controller: GSEBPlatformBundle:Demande:listProperties }
+
+gseb_platform_demande_recap:
+    path:     /demande/recap
+    defaults: { _controller: GSEBPlatformBundle:Demande:demandeRecap }
+
+gseb_platform_demande_success:
+    path:     /demande/success/{id_demande}
+    defaults: { _controller: GSEBPlatformBundle:Demande:demandeSuccess }

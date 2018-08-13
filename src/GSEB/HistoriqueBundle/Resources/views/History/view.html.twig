@@ -1,0 +1,19 @@
+{% extends "@GSEBCore/layout.html.twig" %}
+
+{% block body %}
+{# src/SEB/PlatformBundle/Resources/view/Advert/view.html.twig #}
+
+  <h2>{{ demande.title }}</h2>
+  <i>Par {{ demande.technicien }}, le {{ demande.date|date('d/m/Y') }}</i>
+
+  <div class="well">
+    {{ demande.content }}
+  </div>
+
+  <p>
+    <a href="{{ path('gseb_historique_homepage') }}" class="btn btn-default">
+      <i class="glyphicon glyphicon-chevron-left"></i>
+      Retour à la liste
+    </a>
+
+{% endblock %}

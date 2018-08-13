@@ -1,0 +1,62 @@
+{% extends "@GSEBCore/layout.html.twig" %}
+
+{% block body %}
+    <h2>Liste des Demandes</h2>
+
+    <ul class="list-group">
+        {% for demande in listDemandes %}
+        {% if demande.etat == 1 %}
+            <li class="list-group" >
+                <a href="{{ path('gseb_historique_view', {'id': demande.id}) }}">
+                {{ demande.title }}
+                </a>
+                par {{ demande.technicien }},
+                le {{ demande.date|date('d/m/Y') }}
+                    <button type="button" class="btn btn-success" data-toggle="popover1" data-content="Demande validée"  >Etat de la demande</button>
+            </li>
+            <script>
+                $(document).ready(function(){
+                    $('[data-toggle="popover1"]').popover();
+                });
+            </script>
+        {% endif %}
+
+        {% if demande.etat == 2 %}
+            <li class="list-group" >
+                <a href="{{ path('gseb_historique_view', {'id': demande.id}) }}">
+                {{ demande.title }}
+                </a>
+                par {{ demande.technicien }},
+                le {{ demande.date|date('d/m/Y') }}
+                <span class="d-inline-block" data-toggle="popover2" data-content="Demande en cours de validité">
+                    <button class="btn btn-warning" style="pointer-events: none;" type="button" disabled>Etat de la demande</button>
+                </span>
+            </li>
+            <script>
+            $(document).ready(function(){
+                $('[data-toggle="popover2"]').popover();
+            });
+            </script>
+        {% endif %}
+        {% if demande.etat == 3 %}
+            <li class="list-group" >
+                <a href="{{ path('gseb_historique_view', {'id': demande.id}) }}">
+                {{ demande.title }}
+                </a>
+                par {{ demande.technicien }},
+                le {{ demande.date|date('d/m/Y') }}
+                <span class="d-inline-block" data-toggle="popover3" data-content="Demande refusée">
+                    <button class="btn btn-danger" style="pointer-events: none;" type="button" disabled>Etat de la demande</button>
+                </span>
+            </li>
+        <script>
+            $(document).ready(function(){
+                $('[data-toggle="popover3"]').popover();
+            });
+        </script>
+        {% endif %}
+        {% else %}
+        <li class="list-group">Pas (encore !) d'annonces</li>
+        {% endfor %}
+  </ul>
+{% endblock %}

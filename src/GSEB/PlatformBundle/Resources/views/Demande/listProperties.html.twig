@@ -1,0 +1,88 @@
+{# src/GSEB/PlatformBundle/Resources/views/Action/modif.html.twig #}
+
+{% extends "@GSEBPlatform/layout.html.twig" %}
+
+{% block title %}
+  Selection du type d'objet 
+{% endblock %}
+
+{% block sebplatform_body %}
+  
+  <h2>Veuillez remplir le formulaire ci-dessous</h2>
+  <form>
+    <h4>Renseignement global</h4>
+      <div class="form-group">
+        <label for="subjectRequest">Sujet de la demande</label>
+        <input class="form-control" type="text" placeholder="Ex : Installation d'un serveur dans la salle PA3, Baie 104">
+      </div>
+    <h4>Renseignement sur l'équipement</h4>
+      <div class="form-group">
+        <label for="nameEquip">Nom de l'équipement</label>
+        <input class="form-control" type="text" placeholder="Ex : pour un serveur : SE585875">
+      </div>
+      <div class="form-group">
+      {# Maybe insérer l'image d'une baie avec les U numérotés #}
+        <label for="rackPosition">Position dans le rack (En U)</label>
+        <select multiple class="form-control" id="rackPosition">
+          <option>1</option>
+          <option>2</option>
+          <option>3</option>
+          <option>4</option>
+          <option>5</option>
+        </select>
+      </div>
+      <div class="form-group">
+      {# Maybe insérer l'image d'une baie avec les U numérotés #}
+        <label for="atom">Occuppation dans l'U en profondeur</label>
+        <select multiple class="form-control" id="atom">
+          <option>Front</option>
+          <option>Interior</option>
+          <option>Back</option>
+        </select>
+      </div>
+      {% for carac in resultat %}
+        <div class="form-group">
+          <label for="Attribut"> {{ carac.name }} </label>
+          <input class="form-control" type="text" placeholder="Renseigner 
+            {% if carac.type == 'uint' %}un entier
+            {% elseif carac.type == 'date' %}la date, au format YYYY-MM-DD
+            {% elseif carac.type == 'float' %}un float
+            {% else %}une chaîne de caractère
+            {% endif %}
+          ">
+        </div>
+      {% endfor %}
+    <h4>Contact installateur</h4>
+      <div class="form-group">
+        <label for="name">Nom</label>
+        <input class="form-control" type="text" >
+      </div>
+      <div class="form-group">
+        <label for="prenom">Prenom</label>
+        <input class="form-control" type="text" >
+      </div>
+      <div class="form-group">
+        <label for="mail">Email address</label>
+        <input type="email" class="form-control" id="mail" placeholder="name@example.com">
+      </div>
+      <div class="form-group">
+        <label for="telephone">Numero de téléphone</label>
+        <input type="email" class="form-control" id="telephone" placeholder="name@example.com">
+      </div>
+      <div class="form-group">
+        <label for="societe">Société</label>
+        <input type="societe" class="form-control" id="societe" placeholder="Groupe Seb">
+      </div>
+      <div class="form-group">
+        <label for="Fonction">Votre métier / Fonction</label>
+        <input type="fonction" class="form-control" id="fonction" placeholder="Technicien réseaux...">
+      </div>
+      <div class="form-group">
+        <label for="Commentaire">Espace Commentaire</label>
+        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Si vous avez une remarque particulière à remonter quand à l'intégration de cet outil dans notre base de données"></textarea>
+      </div>
+  <a href="{{ path('gseb_platform_demande_recap')  }}" class="btn btn-primary " role="button" >
+        Valider            
+      </a>
+
+{% endblock %}
