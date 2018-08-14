@@ -11,14 +11,9 @@ use Symfony\Component\HttpFoundation\Session\Session;
 use Doctrine\ORM\EntityManagerInterface;
 
 //--Nécessaire au formulaire
-use GSEB\PlatformBundle\Entity\Contact;
 use GSEB\PlatformBundle\Entity\Demande;
+use GSEB\PlatformBundle\Form\DemandeType;
 use Symfony\Component\Form\Extension\Core\Type\FormType;
-use Symfony\Component\Form\Extension\Core\Type\SubmitType;
-use Symfony\Component\Form\Extension\Core\Type\TextType;
-use Symfony\Component\Form\Extension\Core\Type\EmailType;
-
-
 
 class DemandeController extends Controller
 {
@@ -85,44 +80,33 @@ class DemandeController extends Controller
 
     public function listPropertiesAction($id_objtype,Request $request)
     {
-        $contact = new Contact();
+        $session= $request->getSession();           
         $demande = new Demande();
-        
-        $demande->setAction(1);
-        $demande->setSujet("Création d'un serveur");
-        $demande->setEtat(2);
-        $demande->setComment("Aucun comment");
-
-        $formBuilder = $this->get('form.factory')->createBuilder(FormType::class, $contact);
-        $formBuilder
-              ->add('Nom',              TextType::class)        
-              ->add('prenom',           TextType::class)        
-              ->add('Mail',             EmailType::class)        
-              ->add('Telephone',        TextType::class)        
-              ->add('Societe',          TextType::class)        
-              ->add('Fonction',  TextType::class)
-              ->add('Save',             SubmitType::class)        
-            ;
-        $form = $formBuilder->getForm();
-
+       
+        $formDemande = $this->get('form.factory')->create(DemandeType::class, $demande,[
+            'action' => $session->get('Action'),
+            'idObjType' => $id_objtype,
+            'idBaie'    => $session->get('Baie')
+        ]);
+       
         if ($request->isMethod('POST')) {
             // On fait le lien Requête <-> Formulaire
             // À partir de maintenant, la variable $advert contient les valeurs entrées dans le formulaire par le visiteur
-            $form->handleRequest($request);
+            $formDemande->handleRequest($request);
       
             // On vérifie que les valeurs entrées sont correctes
             // (Nous verrons la validation des objets en détail dans le prochain chapitre)
-            if ($form->isValid()) {
-              // On enregistre notre objet $advert dans la base de données, par exemple
-              $em = $this->getDoctrine()->getManager('demande');
-              $contact->setDemande($demande);
-              $em->persist($demande);              
-              $em->persist($contact);
-              $em->flush();
-              $request->getSession()->getFlashBag()->add('notice', 'Annonce bien enregistrée.');
+            if ($formDemande->isValid()) {
+                // On enregistre notre objet $advert dans la base de données, par exemple
+                $em = $this->getDoctrine()->getManager('demande');
+                //$contact->setDemande($demande);
+                //$em->persist($demande);              
+                $em->persist($demande);
+                $em->flush();
+                $request->getSession()->getFlashBag()->add('notice', 'Demande bien enregistrée.');
               
-                      // On redirige vers la page de visualisation de l'annonce nouvellement créée
-                      return $this->redirectToRoute('gseb_platform_homepage');
+                    // On redirige vers la page de visualisation de l'annonce nouvellement créée
+                    return $this->redirectToRoute('gseb_platform_homepage');
             }
         }
         /*---------------------------------------/
@@ -130,7 +114,6 @@ class DemandeController extends Controller
         /      Récupération de la session        /
         /---------------------------------------*/        
         $conn = $this->get('database_connection');
-        $session= $request->getSession();   
         /*---------------------------------------/
         /        Partie Requête BDD              /
         /---------------------------------------*/ 
@@ -145,7 +128,7 @@ class DemandeController extends Controller
 
         
         return $this->render('@GSEBPlatform/Demande/formTest.html.twig',array(
-            'form' => $form->createView(),
+            'form' => $formDemande->createView(),
         ));
     }
     

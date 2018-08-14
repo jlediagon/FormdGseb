@@ -12,11 +12,7 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Rackspace
 {
-    /**
-     * @ORM\ManyToOne(targetEntity="GSEB\PlatformBundle\Entity\Object")
-     * @ORM\JoinColumn(nullable=false)
-     */
-    private $object;
+    
     
     /**
      * @var int

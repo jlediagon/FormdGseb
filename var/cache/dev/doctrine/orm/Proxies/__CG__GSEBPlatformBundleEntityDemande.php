@@ -64,10 +64,10 @@ class Demande extends \GSEB\PlatformBundle\Entity\Demande implements \Doctrine\O
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return ['__isInitialized__', '' . "\0" . 'GSEB\\PlatformBundle\\Entity\\Demande' . "\0" . 'id', '' . "\0" . 'GSEB\\PlatformBundle\\Entity\\Demande' . "\0" . 'action', '' . "\0" . 'GSEB\\PlatformBundle\\Entity\\Demande' . "\0" . 'sujet', '' . "\0" . 'GSEB\\PlatformBundle\\Entity\\Demande' . "\0" . 'etat', '' . "\0" . 'GSEB\\PlatformBundle\\Entity\\Demande' . "\0" . 'comment', '' . "\0" . 'GSEB\\PlatformBundle\\Entity\\Demande' . "\0" . 'date'];
+            return ['__isInitialized__', '' . "\0" . 'GSEB\\PlatformBundle\\Entity\\Demande' . "\0" . 'contact', '' . "\0" . 'GSEB\\PlatformBundle\\Entity\\Demande' . "\0" . 'object', '' . "\0" . 'GSEB\\PlatformBundle\\Entity\\Demande' . "\0" . 'id', '' . "\0" . 'GSEB\\PlatformBundle\\Entity\\Demande' . "\0" . 'action', '' . "\0" . 'GSEB\\PlatformBundle\\Entity\\Demande' . "\0" . 'sujet', '' . "\0" . 'GSEB\\PlatformBundle\\Entity\\Demande' . "\0" . 'etat', '' . "\0" . 'GSEB\\PlatformBundle\\Entity\\Demande' . "\0" . 'comment', '' . "\0" . 'GSEB\\PlatformBundle\\Entity\\Demande' . "\0" . 'date'];
         }
 
-        return ['__isInitialized__', '' . "\0" . 'GSEB\\PlatformBundle\\Entity\\Demande' . "\0" . 'id', '' . "\0" . 'GSEB\\PlatformBundle\\Entity\\Demande' . "\0" . 'action', '' . "\0" . 'GSEB\\PlatformBundle\\Entity\\Demande' . "\0" . 'sujet', '' . "\0" . 'GSEB\\PlatformBundle\\Entity\\Demande' . "\0" . 'etat', '' . "\0" . 'GSEB\\PlatformBundle\\Entity\\Demande' . "\0" . 'comment', '' . "\0" . 'GSEB\\PlatformBundle\\Entity\\Demande' . "\0" . 'date'];
+        return ['__isInitialized__', '' . "\0" . 'GSEB\\PlatformBundle\\Entity\\Demande' . "\0" . 'contact', '' . "\0" . 'GSEB\\PlatformBundle\\Entity\\Demande' . "\0" . 'object', '' . "\0" . 'GSEB\\PlatformBundle\\Entity\\Demande' . "\0" . 'id', '' . "\0" . 'GSEB\\PlatformBundle\\Entity\\Demande' . "\0" . 'action', '' . "\0" . 'GSEB\\PlatformBundle\\Entity\\Demande' . "\0" . 'sujet', '' . "\0" . 'GSEB\\PlatformBundle\\Entity\\Demande' . "\0" . 'etat', '' . "\0" . 'GSEB\\PlatformBundle\\Entity\\Demande' . "\0" . 'comment', '' . "\0" . 'GSEB\\PlatformBundle\\Entity\\Demande' . "\0" . 'date'];
     }
 
     /**
@@ -296,6 +296,50 @@ class Demande extends \GSEB\PlatformBundle\Entity\Demande implements \Doctrine\O
         $this->__initializer__ && $this->__initializer__->__invoke($this, 'getDate', []);
 
         return parent::getDate();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function setContact(\GSEB\PlatformBundle\Entity\Contact $contact = NULL)
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setContact', [$contact]);
+
+        return parent::setContact($contact);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getContact()
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getContact', []);
+
+        return parent::getContact();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function setObject(\GSEB\PlatformBundle\Entity\Object $object = NULL)
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setObject', [$object]);
+
+        return parent::setObject($object);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getObject()
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getObject', []);
+
+        return parent::getObject();
     }
 
 }

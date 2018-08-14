@@ -64,10 +64,10 @@ class Attribut extends \GSEB\PlatformBundle\Entity\Attribut implements \Doctrine
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return ['__isInitialized__', '' . "\0" . 'GSEB\\PlatformBundle\\Entity\\Attribut' . "\0" . 'object', '' . "\0" . 'GSEB\\PlatformBundle\\Entity\\Attribut' . "\0" . 'id', '' . "\0" . 'GSEB\\PlatformBundle\\Entity\\Attribut' . "\0" . 'value', '' . "\0" . 'GSEB\\PlatformBundle\\Entity\\Attribut' . "\0" . 'attrId'];
+            return ['__isInitialized__', '' . "\0" . 'GSEB\\PlatformBundle\\Entity\\Attribut' . "\0" . 'id', '' . "\0" . 'GSEB\\PlatformBundle\\Entity\\Attribut' . "\0" . 'value', '' . "\0" . 'GSEB\\PlatformBundle\\Entity\\Attribut' . "\0" . 'attrId'];
         }
 
-        return ['__isInitialized__', '' . "\0" . 'GSEB\\PlatformBundle\\Entity\\Attribut' . "\0" . 'object', '' . "\0" . 'GSEB\\PlatformBundle\\Entity\\Attribut' . "\0" . 'id', '' . "\0" . 'GSEB\\PlatformBundle\\Entity\\Attribut' . "\0" . 'value', '' . "\0" . 'GSEB\\PlatformBundle\\Entity\\Attribut' . "\0" . 'attrId'];
+        return ['__isInitialized__', '' . "\0" . 'GSEB\\PlatformBundle\\Entity\\Attribut' . "\0" . 'id', '' . "\0" . 'GSEB\\PlatformBundle\\Entity\\Attribut' . "\0" . 'value', '' . "\0" . 'GSEB\\PlatformBundle\\Entity\\Attribut' . "\0" . 'attrId'];
     }
 
     /**
@@ -230,28 +230,6 @@ class Attribut extends \GSEB\PlatformBundle\Entity\Attribut implements \Doctrine
         $this->__initializer__ && $this->__initializer__->__invoke($this, 'getAttrId', []);
 
         return parent::getAttrId();
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function setObject(\GSEB\PlatformBundle\Entity\Object $object)
-    {
-
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setObject', [$object]);
-
-        return parent::setObject($object);
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function getObject()
-    {
-
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getObject', []);
-
-        return parent::getObject();
     }
 
 }

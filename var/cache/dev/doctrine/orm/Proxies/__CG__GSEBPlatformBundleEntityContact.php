@@ -64,10 +64,10 @@ class Contact extends \GSEB\PlatformBundle\Entity\Contact implements \Doctrine\O
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return ['__isInitialized__', '' . "\0" . 'GSEB\\PlatformBundle\\Entity\\Contact' . "\0" . 'demande', '' . "\0" . 'GSEB\\PlatformBundle\\Entity\\Contact' . "\0" . 'id', '' . "\0" . 'GSEB\\PlatformBundle\\Entity\\Contact' . "\0" . 'nom', '' . "\0" . 'GSEB\\PlatformBundle\\Entity\\Contact' . "\0" . 'prenom', '' . "\0" . 'GSEB\\PlatformBundle\\Entity\\Contact' . "\0" . 'mail', '' . "\0" . 'GSEB\\PlatformBundle\\Entity\\Contact' . "\0" . 'telephone', '' . "\0" . 'GSEB\\PlatformBundle\\Entity\\Contact' . "\0" . 'societe', '' . "\0" . 'GSEB\\PlatformBundle\\Entity\\Contact' . "\0" . 'fonction'];
+            return ['__isInitialized__', '' . "\0" . 'GSEB\\PlatformBundle\\Entity\\Contact' . "\0" . 'id', '' . "\0" . 'GSEB\\PlatformBundle\\Entity\\Contact' . "\0" . 'nom', '' . "\0" . 'GSEB\\PlatformBundle\\Entity\\Contact' . "\0" . 'prenom', '' . "\0" . 'GSEB\\PlatformBundle\\Entity\\Contact' . "\0" . 'mail', '' . "\0" . 'GSEB\\PlatformBundle\\Entity\\Contact' . "\0" . 'telephone', '' . "\0" . 'GSEB\\PlatformBundle\\Entity\\Contact' . "\0" . 'societe', '' . "\0" . 'GSEB\\PlatformBundle\\Entity\\Contact' . "\0" . 'fonction'];
         }
 
-        return ['__isInitialized__', '' . "\0" . 'GSEB\\PlatformBundle\\Entity\\Contact' . "\0" . 'demande', '' . "\0" . 'GSEB\\PlatformBundle\\Entity\\Contact' . "\0" . 'id', '' . "\0" . 'GSEB\\PlatformBundle\\Entity\\Contact' . "\0" . 'nom', '' . "\0" . 'GSEB\\PlatformBundle\\Entity\\Contact' . "\0" . 'prenom', '' . "\0" . 'GSEB\\PlatformBundle\\Entity\\Contact' . "\0" . 'mail', '' . "\0" . 'GSEB\\PlatformBundle\\Entity\\Contact' . "\0" . 'telephone', '' . "\0" . 'GSEB\\PlatformBundle\\Entity\\Contact' . "\0" . 'societe', '' . "\0" . 'GSEB\\PlatformBundle\\Entity\\Contact' . "\0" . 'fonction'];
+        return ['__isInitialized__', '' . "\0" . 'GSEB\\PlatformBundle\\Entity\\Contact' . "\0" . 'id', '' . "\0" . 'GSEB\\PlatformBundle\\Entity\\Contact' . "\0" . 'nom', '' . "\0" . 'GSEB\\PlatformBundle\\Entity\\Contact' . "\0" . 'prenom', '' . "\0" . 'GSEB\\PlatformBundle\\Entity\\Contact' . "\0" . 'mail', '' . "\0" . 'GSEB\\PlatformBundle\\Entity\\Contact' . "\0" . 'telephone', '' . "\0" . 'GSEB\\PlatformBundle\\Entity\\Contact' . "\0" . 'societe', '' . "\0" . 'GSEB\\PlatformBundle\\Entity\\Contact' . "\0" . 'fonction'];
     }
 
     /**
@@ -318,28 +318,6 @@ class Contact extends \GSEB\PlatformBundle\Entity\Contact implements \Doctrine\O
         $this->__initializer__ && $this->__initializer__->__invoke($this, 'getFonction', []);
 
         return parent::getFonction();
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function setDemande(\GSEB\PlatformBundle\Entity\Demande $demande = NULL)
-    {
-
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setDemande', [$demande]);
-
-        return parent::setDemande($demande);
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function getDemande()
-    {
-
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getDemande', []);
-
-        return parent::getDemande();
     }
 
 }

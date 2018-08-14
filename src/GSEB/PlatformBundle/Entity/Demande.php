@@ -3,6 +3,7 @@
 namespace GSEB\PlatformBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\HttpFoundation\Request;
 
 /**
  * Demande
@@ -12,6 +13,16 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Demande
 {
+    /**
+     * @ORM\OneToOne(targetEntity="GSEB\PlatformBundle\Entity\Contact", cascade={"persist"})
+     */
+    private $contact;
+
+    /**
+     * @ORM\OneToOne(targetEntity="GSEB\PlatformBundle\Entity\Object", cascade={"persist"})
+     */
+    private $object;
+
     /**
      * @var int
      *
@@ -58,6 +69,8 @@ class Demande
 
     public function __construct()
     {
+        //$this->action = $action;
+        $this->etat = 1;
         $this->date = new \Datetime();
     }
     /**
@@ -189,5 +202,52 @@ class Demande
     {
         return $this->date;
     }
-}
 
+    /**
+     * Set contact
+     *
+     * @param \GSEB\PlatformBundle\Entity\Contact $contact
+     *
+     * @return Demande
+     */
+    public function setContact(\GSEB\PlatformBundle\Entity\Contact $contact = null)
+    {
+        $this->contact = $contact;
+
+        return $this;
+    }
+
+    /**
+     * Get contact
+     *
+     * @return \GSEB\PlatformBundle\Entity\Contact
+     */
+    public function getContact()
+    {
+        return $this->contact;
+    }
+
+    /**
+     * Set object
+     *
+     * @param \GSEB\PlatformBundle\Entity\Object $object
+     *
+     * @return Demande
+     */
+    public function setObject(\GSEB\PlatformBundle\Entity\Object $object = null)
+    {
+        $this->object = $object;
+
+        return $this;
+    }
+
+    /**
+     * Get object
+     *
+     * @return \GSEB\PlatformBundle\Entity\Object
+     */
+    public function getObject()
+    {
+        return $this->object;
+    }
+}

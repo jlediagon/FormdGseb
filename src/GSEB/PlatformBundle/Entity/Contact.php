@@ -12,11 +12,7 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Contact
 {
-    /**
-     * @ORM\OneToOne(targetEntity="GSEB\PlatformBundle\Entity\Demande", cascade={"persist"})
-     */
-    private $demande;
-    
+  
     /**
      * @var int
      *
@@ -221,29 +217,5 @@ class Contact
     public function getFonction()
     {
         return $this->fonction;
-    }
-
-    /**
-     * Set demande
-     *
-     * @param \GSEB\PlatformBundle\Entity\Demande $demande
-     *
-     * @return Contact
-     */
-    public function setDemande(\GSEB\PlatformBundle\Entity\Demande $demande = null)
-    {
-        $this->demande = $demande;
-
-        return $this;
-    }
-
-    /**
-     * Get demande
-     *
-     * @return \GSEB\PlatformBundle\Entity\Demande
-     */
-    public function getDemande()
-    {
-        return $this->demande;
     }
 }
