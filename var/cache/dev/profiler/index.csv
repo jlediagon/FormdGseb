@@ -415,3 +415,16 @@ f18abc,127.0.0.1,POST,http://formdgseb.com/app_dev.php/platform/demande/object/a
 072004,127.0.0.1,POST,http://formdgseb.com/app_dev.php/platform/demande/object/add,1534236105,,500
 3f20d5,127.0.0.1,POST,http://formdgseb.com/app_dev.php/platform/demande/object/add,1534236292,,302
 27c793,127.0.0.1,GET,http://formdgseb.com/app_dev.php/platform/,1534236292,,200
+c5d6b2,127.0.0.1,GET,http://formdgseb.com/app_dev.php/platform/add,1534238465,,200
+403bf3,127.0.0.1,GET,http://formdgseb.com/app_dev.php/platform/demande/45,1534238467,,200
+fe8430,127.0.0.1,GET,http://formdgseb.com/app_dev.php/platform/demande/salle/3,1534238469,,200
+edec92,127.0.0.1,GET,http://formdgseb.com/app_dev.php/platform/demande/baie/4,1534238470,,200
+ddee24,127.0.0.1,GET,http://formdgseb.com/app_dev.php/platform/demande/object/50012,1534238470,,200
+06bc6d,127.0.0.1,GET,http://formdgseb.com/app_dev.php/history,1534238478,,200
+1102ff,127.0.0.1,GET,http://formdgseb.com/app_dev.php/,1534238998,,200
+fed4af,127.0.0.1,GET,http://formdgseb.com/app_dev.php/platform/,1534238999,,200
+4a95be,127.0.0.1,GET,http://formdgseb.com/app_dev.php/platform/add,1534239000,,200
+30ca05,127.0.0.1,GET,http://formdgseb.com/app_dev.php/platform/demande/45,1534239001,,200
+be56b4,127.0.0.1,GET,http://formdgseb.com/app_dev.php/platform/demande/salle/17,1534239003,,200
+3b5956,127.0.0.1,GET,http://formdgseb.com/app_dev.php/platform/demande/baie/21,1534239004,,200
+ffb248,127.0.0.1,GET,http://formdgseb.com/app_dev.php/platform/demande/object/50012,1534239005,,200

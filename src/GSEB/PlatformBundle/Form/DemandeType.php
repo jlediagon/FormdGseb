@@ -25,7 +25,7 @@ class DemandeType extends AbstractType
     {
         $recupaction = $options['action'];
         $objtype =$options['idObjType'];
-        $id_baie =$options['idObjType'];
+        $id_baie =$options['idBaie'];
         
 
         if ($recupaction == 'add')
