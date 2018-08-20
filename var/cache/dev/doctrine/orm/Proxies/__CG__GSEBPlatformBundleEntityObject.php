@@ -64,10 +64,10 @@ class Object extends \GSEB\PlatformBundle\Entity\Object implements \Doctrine\ORM
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return ['__isInitialized__', '' . "\0" . 'GSEB\\PlatformBundle\\Entity\\Object' . "\0" . 'rackspace', '' . "\0" . 'GSEB\\PlatformBundle\\Entity\\Object' . "\0" . 'attribut', '' . "\0" . 'GSEB\\PlatformBundle\\Entity\\Object' . "\0" . 'id', '' . "\0" . 'GSEB\\PlatformBundle\\Entity\\Object' . "\0" . 'objtypeId', '' . "\0" . 'GSEB\\PlatformBundle\\Entity\\Object' . "\0" . 'name'];
+            return ['__isInitialized__', '' . "\0" . 'GSEB\\PlatformBundle\\Entity\\Object' . "\0" . 'id', '' . "\0" . 'GSEB\\PlatformBundle\\Entity\\Object' . "\0" . 'objtypeId', '' . "\0" . 'GSEB\\PlatformBundle\\Entity\\Object' . "\0" . 'name'];
         }
 
-        return ['__isInitialized__', '' . "\0" . 'GSEB\\PlatformBundle\\Entity\\Object' . "\0" . 'rackspace', '' . "\0" . 'GSEB\\PlatformBundle\\Entity\\Object' . "\0" . 'attribut', '' . "\0" . 'GSEB\\PlatformBundle\\Entity\\Object' . "\0" . 'id', '' . "\0" . 'GSEB\\PlatformBundle\\Entity\\Object' . "\0" . 'objtypeId', '' . "\0" . 'GSEB\\PlatformBundle\\Entity\\Object' . "\0" . 'name'];
+        return ['__isInitialized__', '' . "\0" . 'GSEB\\PlatformBundle\\Entity\\Object' . "\0" . 'id', '' . "\0" . 'GSEB\\PlatformBundle\\Entity\\Object' . "\0" . 'objtypeId', '' . "\0" . 'GSEB\\PlatformBundle\\Entity\\Object' . "\0" . 'name'];
     }
 
     /**
@@ -230,50 +230,6 @@ class Object extends \GSEB\PlatformBundle\Entity\Object implements \Doctrine\ORM
         $this->__initializer__ && $this->__initializer__->__invoke($this, 'getName', []);
 
         return parent::getName();
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function setRackspace(\GSEB\PlatformBundle\Entity\Rackspace $rackspace)
-    {
-
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setRackspace', [$rackspace]);
-
-        return parent::setRackspace($rackspace);
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function getRackspace()
-    {
-
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getRackspace', []);
-
-        return parent::getRackspace();
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function setAttribut(\GSEB\PlatformBundle\Entity\Attribut $attribut)
-    {
-
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setAttribut', [$attribut]);
-
-        return parent::setAttribut($attribut);
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function getAttribut()
-    {
-
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getAttribut', []);
-
-        return parent::getAttribut();
     }
 
 }

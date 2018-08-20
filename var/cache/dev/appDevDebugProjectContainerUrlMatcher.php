@@ -107,6 +107,29 @@ class appDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
 
         }
 
+        // gseb_validation_homepage
+        if ('/accueilValid' === $pathinfo) {
+            return array (  '_controller' => 'GSEB\\ValidationBundle\\Controller\\ValidationController::accueilAction',  '_route' => 'gseb_validation_homepage',);
+        }
+
+        if (0 === strpos($pathinfo, '/demandes')) {
+            // gseb_validation_list
+            if ('/demandes' === $pathinfo) {
+                return array (  '_controller' => 'GSEB\\ValidationBundle\\Controller\\ValidationController::listAction',  '_route' => 'gseb_validation_list',);
+            }
+
+            // gseb_validation_view
+            if (0 === strpos($pathinfo, '/demandes/view') && preg_match('#^/demandes/view/(?P<id>\\d+)$#sD', $pathinfo, $matches)) {
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'gseb_validation_view')), array (  '_controller' => 'GSEB\\ValidationBundle\\Controller\\ValidationController::viewAction',));
+            }
+
+            // gseb_validation_edit
+            if (0 === strpos($pathinfo, '/demandes/edit') && preg_match('#^/demandes/edit/(?P<id>\\d+)$#sD', $pathinfo, $matches)) {
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'gseb_validation_edit')), array (  '_controller' => 'GSEB\\ValidationBundle\\Controller\\ValidationController::editAction',));
+            }
+
+        }
+
         elseif (0 === strpos($pathinfo, '/history')) {
             // gseb_historique_homepage
             if ('/history' === $pathinfo) {
@@ -190,6 +213,24 @@ class appDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
             return $ret;
         }
         not_gseb_core_home:
+
+        if (0 === strpos($pathinfo, '/login')) {
+            // login
+            if ('/login' === $pathinfo) {
+                return array (  '_controller' => 'GSEB\\UserBundle\\Controller\\SecurityController::loginAction',  '_route' => 'login',);
+            }
+
+            // login_check
+            if ('/login_check' === $pathinfo) {
+                return array('_route' => 'login_check');
+            }
+
+        }
+
+        // logout
+        if ('/logout' === $pathinfo) {
+            return array('_route' => 'logout');
+        }
 
         if ('/' === $pathinfo && !$allow) {
             throw new Symfony\Component\Routing\Exception\NoConfigurationException();

@@ -1,0 +1,29 @@
+{# src/GSEB/PlatformBundle/Resources/views/Action/modif.html.twig #}
+
+{% extends "@GSEBValidation/layout.html.twig" %}
+
+{% block title %}
+  Accueil
+{% endblock %}
+
+{% block body %}
+
+    <h2>Liste des Demandes</h2>
+
+    <ul class="list-group">
+        {% for demande in listDemandes %}
+            {% if demande.etat == 2 %}
+                <li class="list-group" >
+                    <a href="{{ path('gseb_validation_view', {'id': demande.id}) }}">
+                    {{ demande.sujet }}
+                    </a>
+                    par {{ demande.contact.nom }} {{ demande.contact.prenom }},
+                    le {{ demande.date|date('d/m/Y') }}
+
+                </li>
+            {% endif %}
+            {% else %} <li class="list-group">Pas (encore !) d'annonces</li>
+        {% endfor %}
+  </ul>
+{% endblock %}
+

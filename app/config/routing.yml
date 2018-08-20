@@ -1,24 +1,27 @@
+# app/config/routing.yml
+
+gseb_validation:
+    resource: "@GSEBValidationBundle/Resources/config/routing.yml"
+    prefix:   /
+
 gseb_historique:
     resource: "@GSEBHistoriqueBundle/Resources/config/routing.yml"
     prefix:   /
-
-# app/config/routing.yml
 
 gseb_platform:
     resource: "@GSEBPlatformBundle/Resources/config/routing.yml"
     prefix:   /platform
 
-# On inclut également les routes de notre CoreBundle, sans préfixe
 gseb_core:
     resource: "@GSEBCoreBundle/Resources/config/routing.yml"
 
-# login:
-#     path: /login
-#     defaults:
-#         _controller: SEBUserBundle:Security:login
+login:
+    path: /login
+    defaults:
+        _controller: GSEBUserBundle:Security:login
 
-# login_check:
-#     path: /login_check
+login_check:
+    path: /login_check
 
-# logout:
-#     path: /logout
+logout:
+    path: /logout

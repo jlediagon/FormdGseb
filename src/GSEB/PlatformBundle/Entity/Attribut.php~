@@ -13,7 +13,7 @@ use Doctrine\ORM\Mapping as ORM;
 class Attribut
 {
     /**
-     * @ORM\ManyToOne(targetEntity="GSEB\PlatformBundle\Entity\Object")
+     * @ORM\ManyToOne(targetEntity="GSEB\PlatformBundle\Entity\Attribut", cascade={"persist"})
      * @ORM\JoinColumn(nullable=false)
      */
     private $object;
@@ -74,5 +74,29 @@ class Attribut
     {
         return $this->value;
     }
-}
 
+    /**
+     * Set attrId
+     *
+     * @param integer $attrId
+     *
+     * @return Attribut
+     */
+    public function setAttrId($attrId)
+    {
+        $this->attrId = $attrId;
+
+        return $this;
+    }
+
+    /**
+     * Get attrId
+     *
+     * @return integer
+     */
+    public function getAttrId()
+    {
+        return $this->attrId;
+    }
+
+}

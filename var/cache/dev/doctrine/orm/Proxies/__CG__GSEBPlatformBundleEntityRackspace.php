@@ -64,10 +64,10 @@ class Rackspace extends \GSEB\PlatformBundle\Entity\Rackspace implements \Doctri
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return ['__isInitialized__', '' . "\0" . 'GSEB\\PlatformBundle\\Entity\\Rackspace' . "\0" . 'id', '' . "\0" . 'GSEB\\PlatformBundle\\Entity\\Rackspace' . "\0" . 'unitNo', '' . "\0" . 'GSEB\\PlatformBundle\\Entity\\Rackspace' . "\0" . 'atom', '' . "\0" . 'GSEB\\PlatformBundle\\Entity\\Rackspace' . "\0" . 'rackId'];
+            return ['__isInitialized__', '' . "\0" . 'GSEB\\PlatformBundle\\Entity\\Rackspace' . "\0" . 'object', '' . "\0" . 'GSEB\\PlatformBundle\\Entity\\Rackspace' . "\0" . 'id', '' . "\0" . 'GSEB\\PlatformBundle\\Entity\\Rackspace' . "\0" . 'unitNo', '' . "\0" . 'GSEB\\PlatformBundle\\Entity\\Rackspace' . "\0" . 'atom', '' . "\0" . 'GSEB\\PlatformBundle\\Entity\\Rackspace' . "\0" . 'rackId'];
         }
 
-        return ['__isInitialized__', '' . "\0" . 'GSEB\\PlatformBundle\\Entity\\Rackspace' . "\0" . 'id', '' . "\0" . 'GSEB\\PlatformBundle\\Entity\\Rackspace' . "\0" . 'unitNo', '' . "\0" . 'GSEB\\PlatformBundle\\Entity\\Rackspace' . "\0" . 'atom', '' . "\0" . 'GSEB\\PlatformBundle\\Entity\\Rackspace' . "\0" . 'rackId'];
+        return ['__isInitialized__', '' . "\0" . 'GSEB\\PlatformBundle\\Entity\\Rackspace' . "\0" . 'object', '' . "\0" . 'GSEB\\PlatformBundle\\Entity\\Rackspace' . "\0" . 'id', '' . "\0" . 'GSEB\\PlatformBundle\\Entity\\Rackspace' . "\0" . 'unitNo', '' . "\0" . 'GSEB\\PlatformBundle\\Entity\\Rackspace' . "\0" . 'atom', '' . "\0" . 'GSEB\\PlatformBundle\\Entity\\Rackspace' . "\0" . 'rackId'];
     }
 
     /**

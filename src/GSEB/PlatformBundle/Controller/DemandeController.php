@@ -12,6 +12,11 @@ use Doctrine\ORM\EntityManagerInterface;
 
 //--Nécessaire au formulaire
 use GSEB\PlatformBundle\Entity\Demande;
+use GSEB\PlatformBundle\Entity\Contact;
+use GSEB\PlatformBundle\Entity\Attribut;
+use GSEB\PlatformBundle\Entity\Object;
+use GSEB\PlatformBundle\Entity\Rackspace;
+
 use GSEB\PlatformBundle\Form\DemandeType;
 use Symfony\Component\Form\Extension\Core\Type\FormType;
 
@@ -32,6 +37,54 @@ class DemandeController extends Controller
             'SELECT * '.
             'from Row'
         );
+        $demande = new Demande();
+        $object = new Object();
+        $contact = new Contact();
+        $attr1 = new Attribut();
+        $attr2 = new Attribut();
+        $rackspace = new Rackspace();
+        
+        //--------Object---------
+        $object->setObjtypeId(56);
+        $object->setName("Switch 203NX");
+
+        //--------Demande---------
+        $demande->setAction(1);
+        $demande->setSujet("Installation d'un switch baie 104");
+        $demande->setComment("No comment for this object");
+        
+        //--------Contact---------
+        $contact->setNom("Durand");
+        $contact->setPrenom("Jean-Yves");
+        $contact->setMail("jy.dur@mail.com");
+        $contact->setTelephone("0658589623");
+        $contact->setSociete("Nutanix");
+        $contact->setFonction("ArchiRes");
+        
+        //--------Attribut 1---------
+        $attr1->setAttrId(42);
+        $attr1->setValue("Cisco ver. XXXX");
+        //--------Attribut 2---------
+        $attr2->setAttrId(16);
+        $attr2->setValue("1000 kW/h");
+        
+        //--------RackSpace---------
+        $rackspace->setRackId(16);
+        $rackspace->setUnitNo(12);
+        $rackspace->setAtom(1);
+        
+        //--------Liaisons---------
+        $rackspace->setObject($object);
+        $attr1->setObject($object);
+        $attr2->setObject($object);
+        $demande->setObject($object);        
+        $demande->setContact($contact);
+
+        $em = $this->getDoctrine()->getManager('demande');
+        $em->persist($object);        
+        $em->persist($demande);
+
+        $em->flush();
 
         return $this->render('@GSEBPlatform/Demande/listSalle.html.twig',array('resultat' => $salles));
     }
@@ -82,33 +135,7 @@ class DemandeController extends Controller
     {
         $session= $request->getSession();           
         $demande = new Demande();
-       
-        $formDemande = $this->get('form.factory')->create(DemandeType::class, $demande,[
-            'action' => $session->get('Action'),
-            'idObjType' => $id_objtype,
-            'idBaie'    => $session->get('Baie')
-        ]);
-       
-        if ($request->isMethod('POST')) {
-            // On fait le lien Requête <-> Formulaire
-            // À partir de maintenant, la variable $advert contient les valeurs entrées dans le formulaire par le visiteur
-            $formDemande->handleRequest($request);
-      
-            // On vérifie que les valeurs entrées sont correctes
-            // (Nous verrons la validation des objets en détail dans le prochain chapitre)
-            if ($formDemande->isValid()) {
-                // On enregistre notre objet $advert dans la base de données, par exemple
-                $em = $this->getDoctrine()->getManager('demande');
-                //$contact->setDemande($demande);
-                //$em->persist($demande);              
-                $em->persist($demande);
-                $em->flush();
-                $request->getSession()->getFlashBag()->add('notice', 'Demande bien enregistrée.');
-              
-                    // On redirige vers la page de visualisation de l'annonce nouvellement créée
-                    return $this->redirectToRoute('gseb_platform_homepage');
-            }
-        }
+        //$id_objtype = 7;
         /*---------------------------------------/
         /            Connexion BDD               /
         /      Récupération de la session        /
@@ -117,16 +144,44 @@ class DemandeController extends Controller
         /*---------------------------------------/
         /        Partie Requête BDD              /
         /---------------------------------------*/ 
-        $caracobject = $conn->fetchAll
-        (
-            'SELECT a.id, a.name, a.type, am.chapter_id '.
-            'FROM Attribute a '.
-            'JOIN AttributeMap am '.
-            'ON a.id=am.attr_id '.
-            'WHERE am.objtype_id='.$id_objtype.' '
-        );      
+        if ($id_objtype != 'add' and $id_objtype != 'edit' and $id_objtype != 'delete')
+        {
+            $caracobject = $conn->fetchAll
+            (
+                'SELECT a.id, a.name, a.type, am.chapter_id '.
+                'FROM Attribute a '.
+                'JOIN AttributeMap am '.
+                'ON a.id=am.attr_id '.
+                'WHERE am.objtype_id='.$id_objtype.' '
+            );
+        }
+        $caracobject = 0;
+        /*---------------------------------------/
+        /          Partie Formulaire             /
+        /---------------------------------------*/        
+        $formDemande = $this->get('form.factory')->create(DemandeType::class, $demande,[
+            'action' => $session->get('Action'),
+            'idObjType' => $id_objtype,
+            'idBaie'    => $session->get('Baie'),
+            'attributs' => $caracobject,
 
-        
+        ]);
+        /*---------------------------------------/
+        /        Validation du formulaire        /
+        /---------------------------------------*/   
+        if ($request->isMethod('POST')) {
+            echo "BONJOUR JE SUIS UNE REQUETE POST";
+            return $this->redirectToRoute('gseb_platform_homepage');
+            
+            $formDemande->handleRequest($request);
+            if ($formDemande->isValid()) {
+                $em = $this->getDoctrine()->getManager('demande');
+                $em->persist($demande);
+                $em->flush();
+                //$request->getSession()->getFlashBag()->add('notice', 'Demande bien enregistrée.');
+                return $this->redirectToRoute('gseb_platform_homepage');
+            }        
+        }
         return $this->render('@GSEBPlatform/Demande/formTest.html.twig',array(
             'form' => $formDemande->createView(),
         ));

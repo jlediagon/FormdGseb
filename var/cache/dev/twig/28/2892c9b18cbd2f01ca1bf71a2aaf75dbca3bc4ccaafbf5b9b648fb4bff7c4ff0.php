@@ -82,7 +82,7 @@ class __TwigTemplate_8e56845eb1b34cd9125f91106bba6c1e5016cf965934363d320c7c92c29
             echo "              <li class=\"list-group\" >
               <a href=\"";
             // line 18
-            echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("gseb_platform_demande_baie", array("id_salle" => $this->getAttribute($context["salle"], "id", array()))), "html", null, true);
+            echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("gseb_historique_view", array("id" => 1));
             echo "\" class=\"btn btn-primary \" role=\"button\" >
                 ";
             // line 19
@@ -92,15 +92,17 @@ class __TwigTemplate_8e56845eb1b34cd9125f91106bba6c1e5016cf965934363d320c7c92c29
             echo ", ";
             echo twig_escape_filter($this->env, $this->getAttribute($context["salle"], "location_name", array()), "html", null, true);
             echo "
-              </a>
-                  
+              </a> 
+              ";
+            // line 24
+            echo "                  
               </li>
   ";
         }
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['salle'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 24
+        // line 27
         echo "  </ul>
  
 
@@ -125,7 +127,7 @@ class __TwigTemplate_8e56845eb1b34cd9125f91106bba6c1e5016cf965934363d320c7c92c29
 
     public function getDebugInfo()
     {
-        return array (  104 => 24,  89 => 19,  85 => 18,  82 => 17,  78 => 16,  70 => 10,  61 => 9,  50 => 6,  41 => 5,  11 => 3,);
+        return array (  106 => 27,  98 => 24,  89 => 19,  85 => 18,  82 => 17,  78 => 16,  70 => 10,  61 => 9,  50 => 6,  41 => 5,  11 => 3,);
     }
 
     /** @deprecated since 1.27 (to be removed in 2.0). Use getSourceContext() instead */
@@ -155,9 +157,12 @@ class __TwigTemplate_8e56845eb1b34cd9125f91106bba6c1e5016cf965934363d320c7c92c29
   <ul>
   {% for salle in resultat %}
               <li class=\"list-group\" >
-              <a href=\"{{ path('gseb_platform_demande_baie', {'id_salle': salle.id })  }}\" class=\"btn btn-primary \" role=\"button\" >
+              <a href=\"{{ path('gseb_historique_view', {'id': 1 })  }}\" class=\"btn btn-primary \" role=\"button\" >
                 {{ salle.name }}, {{ salle.id }}, {{ salle.location_name }}
-              </a>
+              </a> 
+              {# <a href=\"{{ path('gseb_platform_demande_baie', {'id_salle': salle.id })  }}\" class=\"btn btn-primary \" role=\"button\" >
+                {{ salle.name }}, {{ salle.id }}, {{ salle.location_name }}
+              </a> #}
                   
               </li>
   {% endfor %}

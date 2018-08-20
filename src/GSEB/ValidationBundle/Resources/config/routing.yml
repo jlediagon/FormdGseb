@@ -1,0 +1,19 @@
+gseb_validation_homepage:
+    path:     /accueilValid
+    defaults: { _controller: GSEBValidationBundle:Validation:accueil }
+
+gseb_validation_list:
+    path:     /demandes
+    defaults: { _controller: GSEBValidationBundle:Validation:list }
+
+gseb_validation_view:
+    path:     /demandes/view/{id}
+    defaults: { _controller: GSEBValidationBundle:Validation:view }
+    requirements:
+        id: \d+
+
+gseb_validation_edit:
+    path:    /demandes/edit/{id}
+    defaults: { _controller: GSEBValidationBundle:Validation:edit }
+    requirements:
+        id: \d+

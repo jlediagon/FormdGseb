@@ -12,17 +12,6 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Object
 {    
-    /**
-     * @ORM\ManyToOne(targetEntity="GSEB\PlatformBundle\Entity\Rackspace", cascade={"persist"})
-     * @ORM\JoinColumn(nullable=false)
-     */
-    private $rackspace;
-
-    /**
-     * @ORM\ManyToOne(targetEntity="GSEB\PlatformBundle\Entity\Attribut", cascade={"persist"})
-     * @ORM\JoinColumn(nullable=false)
-     */
-    private $attribut;
 
     /**
      * @var int
@@ -106,51 +95,4 @@ class Object
         return $this->name;
     }
 
-    /**
-     * Set rackspace
-     *
-     * @param \GSEB\PlatformBundle\Entity\Rackspace $rackspace
-     *
-     * @return Object
-     */
-    public function setRackspace(\GSEB\PlatformBundle\Entity\Rackspace $rackspace)
-    {
-        $this->rackspace = $rackspace;
-
-        return $this;
-    }
-
-    /**
-     * Get rackspace
-     *
-     * @return \GSEB\PlatformBundle\Entity\Rackspace
-     */
-    public function getRackspace()
-    {
-        return $this->rackspace;
-    }
-
-    /**
-     * Set attribut
-     *
-     * @param \GSEB\PlatformBundle\Entity\Attribut $attribut
-     *
-     * @return Object
-     */
-    public function setAttribut(\GSEB\PlatformBundle\Entity\Attribut $attribut)
-    {
-        $this->attribut = $attribut;
-
-        return $this;
-    }
-
-    /**
-     * Get attribut
-     *
-     * @return \GSEB\PlatformBundle\Entity\Attribut
-     */
-    public function getAttribut()
-    {
-        return $this->attribut;
-    }
 }

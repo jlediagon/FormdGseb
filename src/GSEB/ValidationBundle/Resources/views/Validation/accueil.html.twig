@@ -1,0 +1,19 @@
+{# src/GSEB/PlatformBundle/Resources/views/Action/modif.html.twig #}
+
+{% extends "@GSEBValidation/layout.html.twig" %}
+
+{% block title %}
+  Accueil
+{% endblock %}
+
+{% block sebplatform_body %}
+
+  <h2> Bonjour </h2>
+   <p>
+      Vous êtes connecté en tant que validateur ! Cliquez sur le bouton suivant afin d'accéder aux demandes de validations en cours :
+  </p>
+  <a href="{{ path('gseb_validation_list')}}" class="btn btn-primary " role="button" >
+    Accéder aux demandes
+  </a>
+  
+{% endblock %}

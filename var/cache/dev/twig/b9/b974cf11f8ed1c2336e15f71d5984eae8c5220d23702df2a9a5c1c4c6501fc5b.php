@@ -12,6 +12,7 @@ class __TwigTemplate_a78c55728c008a6b9172b3a2dee53adaef80d67e1379b83f0989ebfed8c
         $this->blocks = array(
             'title' => array($this, 'block_title'),
             'stylesheets' => array($this, 'block_stylesheets'),
+            'navbar' => array($this, 'block_navbar'),
             'body' => array($this, 'block_body'),
             'javascripts' => array($this, 'block_javascripts'),
         );
@@ -49,40 +50,21 @@ class __TwigTemplate_a78c55728c008a6b9172b3a2dee53adaef80d67e1379b83f0989ebfed8c
 
         <!-- Static navbar -->
         <nav class=\"navbar navbar-default\">
-          <div class=\"container-fluid\">
-            <div class=\"navbar-header\">
-              <button type=\"button\" class=\"navbar-toggle collapsed\" data-toggle=\"collapse\" data-target=\"#navbar\" aria-expanded=\"false\" aria-controls=\"navbar\">
-                <span class=\"sr-only\">Toggle navigation</span>
-                <span class=\"icon-bar\"></span>
-                <span class=\"icon-bar\"></span>
-                <span class=\"icon-bar\"></span>
-              </button>
-          
-              <a class=\"navbar-brand\" href=\"";
-        // line 39
-        echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("gseb_core_home");
-        echo "\">Accueil</a>
-            </div>
-            <div id=\"navbar\" class=\"navbar-collapse collapse\">
-              <ul class=\"nav navbar-nav\">
-                <li><a href=\"";
-        // line 43
-        echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("gseb_historique_homepage");
-        echo "\">Historique</a></li>
-                <li><a href=\"#\">Contact</a></li>
-              </ul>
-            </div><!--/.nav-collapse -->
-          </div><!--/.container-fluid -->
+        ";
+        // line 30
+        $this->displayBlock('navbar', $context, $blocks);
+        // line 32
+        echo "
         </nav>
 
 ";
-        // line 67
+        // line 52
         echo "        
 
         ";
-        // line 69
+        // line 54
         $this->displayBlock('body', $context, $blocks);
-        // line 71
+        // line 56
         echo "    
      
     </div> <!-- /container -->
@@ -91,7 +73,7 @@ class __TwigTemplate_a78c55728c008a6b9172b3a2dee53adaef80d67e1379b83f0989ebfed8c
 
       <!-- Copyright -->
       <div class=\"footer-copyright text-center py-3\">Ce site web est développé dans le cadre du projet RackTables © ";
-        // line 78
+        // line 63
         echo twig_escape_filter($this->env, twig_date_format_filter($this->env, "now", "Y"), "html", null, true);
         echo " Copyright</div>
       <!-- Copyright -->
@@ -101,9 +83,9 @@ class __TwigTemplate_a78c55728c008a6b9172b3a2dee53adaef80d67e1379b83f0989ebfed8c
       
 
     ";
-        // line 85
+        // line 70
         $this->displayBlock('javascripts', $context, $blocks);
-        // line 90
+        // line 75
         echo "
   </body>
 </html>";
@@ -157,16 +139,16 @@ class __TwigTemplate_a78c55728c008a6b9172b3a2dee53adaef80d67e1379b83f0989ebfed8c
 
     }
 
-    // line 69
-    public function block_body($context, array $blocks = array())
+    // line 30
+    public function block_navbar($context, array $blocks = array())
     {
         $__internal_085b0142806202599c7fe3b329164a92397d8978207a37e79d70b8c52599e33e = $this->env->getExtension("Symfony\\Bundle\\WebProfilerBundle\\Twig\\WebProfilerExtension");
-        $__internal_085b0142806202599c7fe3b329164a92397d8978207a37e79d70b8c52599e33e->enter($__internal_085b0142806202599c7fe3b329164a92397d8978207a37e79d70b8c52599e33e_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "body"));
+        $__internal_085b0142806202599c7fe3b329164a92397d8978207a37e79d70b8c52599e33e->enter($__internal_085b0142806202599c7fe3b329164a92397d8978207a37e79d70b8c52599e33e_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "navbar"));
 
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
-        $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->enter($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "body"));
+        $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->enter($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "navbar"));
 
-        // line 70
+        // line 31
         echo "        ";
         
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->leave($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof);
@@ -176,7 +158,26 @@ class __TwigTemplate_a78c55728c008a6b9172b3a2dee53adaef80d67e1379b83f0989ebfed8c
 
     }
 
-    // line 85
+    // line 54
+    public function block_body($context, array $blocks = array())
+    {
+        $__internal_085b0142806202599c7fe3b329164a92397d8978207a37e79d70b8c52599e33e = $this->env->getExtension("Symfony\\Bundle\\WebProfilerBundle\\Twig\\WebProfilerExtension");
+        $__internal_085b0142806202599c7fe3b329164a92397d8978207a37e79d70b8c52599e33e->enter($__internal_085b0142806202599c7fe3b329164a92397d8978207a37e79d70b8c52599e33e_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "body"));
+
+        $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
+        $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->enter($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "body"));
+
+        // line 55
+        echo "        ";
+        
+        $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->leave($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof);
+
+        
+        $__internal_085b0142806202599c7fe3b329164a92397d8978207a37e79d70b8c52599e33e->leave($__internal_085b0142806202599c7fe3b329164a92397d8978207a37e79d70b8c52599e33e_prof);
+
+    }
+
+    // line 70
     public function block_javascripts($context, array $blocks = array())
     {
         $__internal_085b0142806202599c7fe3b329164a92397d8978207a37e79d70b8c52599e33e = $this->env->getExtension("Symfony\\Bundle\\WebProfilerBundle\\Twig\\WebProfilerExtension");
@@ -185,9 +186,9 @@ class __TwigTemplate_a78c55728c008a6b9172b3a2dee53adaef80d67e1379b83f0989ebfed8c
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->enter($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "javascripts"));
 
-        // line 86
+        // line 71
         echo "      ";
-        // line 87
+        // line 72
         echo "      <script src=\"//ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js\"></script>
       <script src=\"//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js\"></script>
     ";
@@ -211,7 +212,7 @@ class __TwigTemplate_a78c55728c008a6b9172b3a2dee53adaef80d67e1379b83f0989ebfed8c
 
     public function getDebugInfo()
     {
-        return array (  191 => 87,  189 => 86,  180 => 85,  170 => 70,  161 => 69,  151 => 22,  148 => 13,  146 => 12,  137 => 11,  119 => 9,  107 => 90,  105 => 85,  95 => 78,  86 => 71,  84 => 69,  80 => 67,  70 => 43,  63 => 39,  45 => 23,  43 => 11,  38 => 9,  29 => 2,);
+        return array (  192 => 72,  190 => 71,  181 => 70,  171 => 55,  162 => 54,  152 => 31,  143 => 30,  133 => 22,  130 => 13,  128 => 12,  119 => 11,  101 => 9,  89 => 75,  87 => 70,  77 => 63,  68 => 56,  66 => 54,  62 => 52,  57 => 32,  55 => 30,  46 => 23,  44 => 11,  39 => 9,  30 => 2,);
     }
 
     /** @deprecated since 1.27 (to be removed in 2.0). Use getSourceContext() instead */
@@ -253,24 +254,9 @@ class __TwigTemplate_a78c55728c008a6b9172b3a2dee53adaef80d67e1379b83f0989ebfed8c
 
         <!-- Static navbar -->
         <nav class=\"navbar navbar-default\">
-          <div class=\"container-fluid\">
-            <div class=\"navbar-header\">
-              <button type=\"button\" class=\"navbar-toggle collapsed\" data-toggle=\"collapse\" data-target=\"#navbar\" aria-expanded=\"false\" aria-controls=\"navbar\">
-                <span class=\"sr-only\">Toggle navigation</span>
-                <span class=\"icon-bar\"></span>
-                <span class=\"icon-bar\"></span>
-                <span class=\"icon-bar\"></span>
-              </button>
-          
-              <a class=\"navbar-brand\" href=\"{{ path('gseb_core_home') }}\">Accueil</a>
-            </div>
-            <div id=\"navbar\" class=\"navbar-collapse collapse\">
-              <ul class=\"nav navbar-nav\">
-                <li><a href=\"{{ path('gseb_historique_homepage') }}\">Historique</a></li>
-                <li><a href=\"#\">Contact</a></li>
-              </ul>
-            </div><!--/.nav-collapse -->
-          </div><!--/.container-fluid -->
+        {% block navbar %}
+        {% endblock %}
+
         </nav>
 
 {# <nav class=\"navbar navbar-expand-lg navbar-dark primary-color\">

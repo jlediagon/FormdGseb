@@ -19,12 +19,17 @@ class RackspaceType extends AbstractType
         $id_baie = intval($options['idBaie']);
         
         $builder
-            ->add('unitNo', IntegerType::class)
-            ->add('atom',   IntegerType::class)
+            ->add('unitNo', IntegerType::class,array(
+                'label'=> "Numéro d'U dans la baie"
+            ))
+            ->add('atom',   IntegerType::class,array(
+                'label'=> "Occupation 3D dans la baie"
+            ))
             ->add('rackId', HiddenType::class, array(
                 'data' => $id_baie,
             ))
             ;
+        
     }/**
      * {@inheritdoc}
      */

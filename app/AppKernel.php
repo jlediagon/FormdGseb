@@ -20,6 +20,8 @@ class AppKernel extends Kernel
             new GSEB\PlatformBundle\GSEBPlatformBundle(),
             new GSEB\CoreBundle\GSEBCoreBundle(),
             new GSEB\HistoriqueBundle\GSEBHistoriqueBundle(),
+            new GSEB\ValidationBundle\GSEBValidationBundle(),
+            new GSEB\UserBundle\GSEBUserBundle(),
         ];
 
         if (in_array($this->getEnvironment(), ['dev', 'test'], true)) {

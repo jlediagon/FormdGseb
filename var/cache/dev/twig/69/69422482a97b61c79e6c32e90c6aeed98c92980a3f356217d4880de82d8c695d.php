@@ -11,6 +11,7 @@ class __TwigTemplate_9f8f8a59c53adfa92b09b2a1db3a879be2a815882bcd162d363d08ebbfa
         $this->parent = $this->loadTemplate("@GSEBCore/layout.html.twig", "@GSEBPlatform/layout.html.twig", 3);
         $this->blocks = array(
             'title' => array($this, 'block_title'),
+            'navbar' => array($this, 'block_navbar'),
             'body' => array($this, 'block_body'),
             'sebplatform_body' => array($this, 'block_sebplatform_body'),
         );
@@ -61,6 +62,50 @@ class __TwigTemplate_9f8f8a59c53adfa92b09b2a1db3a879be2a815882bcd162d363d08ebbfa
     }
 
     // line 9
+    public function block_navbar($context, array $blocks = array())
+    {
+        $__internal_085b0142806202599c7fe3b329164a92397d8978207a37e79d70b8c52599e33e = $this->env->getExtension("Symfony\\Bundle\\WebProfilerBundle\\Twig\\WebProfilerExtension");
+        $__internal_085b0142806202599c7fe3b329164a92397d8978207a37e79d70b8c52599e33e->enter($__internal_085b0142806202599c7fe3b329164a92397d8978207a37e79d70b8c52599e33e_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "navbar"));
+
+        $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
+        $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->enter($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "navbar"));
+
+        // line 10
+        echo "
+    <div class=\"container-fluid\">
+        <div class=\"navbar-header\">
+        <button type=\"button\" class=\"navbar-toggle collapsed\" data-toggle=\"collapse\" data-target=\"#navbar\" aria-expanded=\"false\" aria-controls=\"navbar\">
+            <span class=\"sr-only\">Toggle navigation</span>
+            <span class=\"icon-bar\"></span>
+            <span class=\"icon-bar\"></span>
+            <span class=\"icon-bar\"></span>
+        </button>
+    
+        <a class=\"navbar-brand\" href=\"";
+        // line 20
+        echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("gseb_core_home");
+        echo "\">Accueil</a>
+        </div>
+        <div id=\"navbar\" class=\"navbar-collapse collapse\">
+        <ul class=\"nav navbar-nav\">
+            <li><a href=\"";
+        // line 24
+        echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("gseb_historique_homepage");
+        echo "\">Historique</a></li>
+            <li><a href=\"#\">Contact</a></li>
+        </ul>
+        </div><!--/.nav-collapse -->
+    </div><!--/.container-fluid -->
+";
+        
+        $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->leave($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof);
+
+        
+        $__internal_085b0142806202599c7fe3b329164a92397d8978207a37e79d70b8c52599e33e->leave($__internal_085b0142806202599c7fe3b329164a92397d8978207a37e79d70b8c52599e33e_prof);
+
+    }
+
+    // line 31
     public function block_body($context, array $blocks = array())
     {
         $__internal_085b0142806202599c7fe3b329164a92397d8978207a37e79d70b8c52599e33e = $this->env->getExtension("Symfony\\Bundle\\WebProfilerBundle\\Twig\\WebProfilerExtension");
@@ -69,18 +114,18 @@ class __TwigTemplate_9f8f8a59c53adfa92b09b2a1db3a879be2a815882bcd162d363d08ebbfa
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->enter($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "body"));
 
-        // line 10
+        // line 32
         echo "
   ";
-        // line 12
+        // line 34
         echo "  <h1>Plateforme global</h1>
 
   <hr>
   ";
-        // line 16
+        // line 38
         echo "  ";
         $this->displayBlock('sebplatform_body', $context, $blocks);
-        // line 19
+        // line 41
         echo "
 ";
         
@@ -91,7 +136,7 @@ class __TwigTemplate_9f8f8a59c53adfa92b09b2a1db3a879be2a815882bcd162d363d08ebbfa
 
     }
 
-    // line 16
+    // line 38
     public function block_sebplatform_body($context, array $blocks = array())
     {
         $__internal_085b0142806202599c7fe3b329164a92397d8978207a37e79d70b8c52599e33e = $this->env->getExtension("Symfony\\Bundle\\WebProfilerBundle\\Twig\\WebProfilerExtension");
@@ -100,7 +145,7 @@ class __TwigTemplate_9f8f8a59c53adfa92b09b2a1db3a879be2a815882bcd162d363d08ebbfa
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->enter($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "sebplatform_body"));
 
-        // line 17
+        // line 39
         echo "
   ";
         
@@ -123,7 +168,7 @@ class __TwigTemplate_9f8f8a59c53adfa92b09b2a1db3a879be2a815882bcd162d363d08ebbfa
 
     public function getDebugInfo()
     {
-        return array (  104 => 17,  95 => 16,  84 => 19,  81 => 16,  76 => 12,  73 => 10,  64 => 9,  51 => 6,  42 => 5,  11 => 3,);
+        return array (  149 => 39,  140 => 38,  129 => 41,  126 => 38,  121 => 34,  118 => 32,  109 => 31,  93 => 24,  86 => 20,  74 => 10,  65 => 9,  52 => 6,  43 => 5,  11 => 3,);
     }
 
     /** @deprecated since 1.27 (to be removed in 2.0). Use getSourceContext() instead */
@@ -142,6 +187,28 @@ class __TwigTemplate_9f8f8a59c53adfa92b09b2a1db3a879be2a815882bcd162d363d08ebbfa
 
 {% block title %}
   Plateforme - {{ parent() }}
+{% endblock %}
+
+{% block navbar %}
+
+    <div class=\"container-fluid\">
+        <div class=\"navbar-header\">
+        <button type=\"button\" class=\"navbar-toggle collapsed\" data-toggle=\"collapse\" data-target=\"#navbar\" aria-expanded=\"false\" aria-controls=\"navbar\">
+            <span class=\"sr-only\">Toggle navigation</span>
+            <span class=\"icon-bar\"></span>
+            <span class=\"icon-bar\"></span>
+            <span class=\"icon-bar\"></span>
+        </button>
+    
+        <a class=\"navbar-brand\" href=\"{{ path('gseb_core_home') }}\">Accueil</a>
+        </div>
+        <div id=\"navbar\" class=\"navbar-collapse collapse\">
+        <ul class=\"nav navbar-nav\">
+            <li><a href=\"{{ path('gseb_historique_homepage') }}\">Historique</a></li>
+            <li><a href=\"#\">Contact</a></li>
+        </ul>
+        </div><!--/.nav-collapse -->
+    </div><!--/.container-fluid -->
 {% endblock %}
 
 {% block body %}

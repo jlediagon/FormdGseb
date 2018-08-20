@@ -26,6 +26,7 @@ class DemandeType extends AbstractType
         $recupaction = $options['action'];
         $objtype =$options['idObjType'];
         $id_baie =$options['idBaie'];
+        $attrObj =$options['attributs'];
         
 
         if ($recupaction == 'add')
@@ -37,8 +38,9 @@ class DemandeType extends AbstractType
             
         $builder
 
-            ->add('sujet',      TextType::class)
-            ->add('comment',    TextareaType::class, ['required' => false])
+            ->add('sujet',      TextType::class,array(
+                'label'=> 'Sujet de la demande'
+            ))
             ->add('action', HiddenType::class, array(
                 'data' => $action,
             ))
@@ -46,10 +48,13 @@ class DemandeType extends AbstractType
             ->add('object',      ObjectType::class, array(
                 'idObjType' => $objtype,
                 'idBaie' => $id_baie,
+                'attrObj' => $attrObj,
+                'label' => 'Equipement à installer',
             ))
+            ->add('comment',    TextareaType::class, ['required' => false])                        
             ->add('save',    SubmitType::class,array(
                 'label'=> 'Envoyer la demande'
-            ))            
+            ))
         ;
     }/**
      * {@inheritdoc}
@@ -58,8 +63,10 @@ class DemandeType extends AbstractType
     {
         $resolver->setRequired(['idObjType']);
         $resolver->setRequired(['idBaie']);
+        $resolver->setRequired(['attributs']);        
         $resolver->setDefaults(array(
             'data_class' => 'GSEB\PlatformBundle\Entity\Demande',
+            'csrf_protection' => false,
         ));
     }  
     /**

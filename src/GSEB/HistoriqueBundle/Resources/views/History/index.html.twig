@@ -1,62 +1,67 @@
 {% extends "@GSEBCore/layout.html.twig" %}
+{% block navbar %}
+
+    <div class="container-fluid">
+        <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+        </button>
+    
+        <a class="navbar-brand" href="{{ path('gseb_core_home') }}">Accueil</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+        <ul class="nav navbar-nav">
+            <li><a href="{{ path('gseb_historique_homepage') }}">Historique</a></li>
+            <li><a href="#">Contact</a></li>
+        </ul>
+        </div><!--/.nav-collapse -->
+    </div><!--/.container-fluid -->
+{% endblock %}
 
 {% block body %}
+
     <h2>Liste des Demandes</h2>
 
     <ul class="list-group">
         {% for demande in listDemandes %}
-        {% if demande.etat == 1 %}
-            <li class="list-group" >
-                <a href="{{ path('gseb_historique_view', {'id': demande.id}) }}">
-                {{ demande.title }}
-                </a>
-                par {{ demande.technicien }},
-                le {{ demande.date|date('d/m/Y') }}
-                    <button type="button" class="btn btn-success" data-toggle="popover1" data-content="Demande validée"  >Etat de la demande</button>
-            </li>
-            <script>
-                $(document).ready(function(){
-                    $('[data-toggle="popover1"]').popover();
-                });
-            </script>
-        {% endif %}
+            {% if demande.etat == 1 %}
+                <li class="list-group" >
+                    <a href="{{ path('gseb_historique_view', {'id': demande.id}) }}">
+                    {{ demande.sujet }}
+                    </a>
+                    par {{ demande.contact.nom }} {{ demande.contact.prenom }},
+                    le {{ demande.date|date('d/m/Y') }}
+                        <button type="button" class="btn btn-success" type="button" >Demande validée</button>
+                </li>
+            {% endif %}
 
-        {% if demande.etat == 2 %}
-            <li class="list-group" >
-                <a href="{{ path('gseb_historique_view', {'id': demande.id}) }}">
-                {{ demande.title }}
-                </a>
-                par {{ demande.technicien }},
-                le {{ demande.date|date('d/m/Y') }}
-                <span class="d-inline-block" data-toggle="popover2" data-content="Demande en cours de validité">
-                    <button class="btn btn-warning" style="pointer-events: none;" type="button" disabled>Etat de la demande</button>
-                </span>
-            </li>
-            <script>
-            $(document).ready(function(){
-                $('[data-toggle="popover2"]').popover();
-            });
-            </script>
-        {% endif %}
-        {% if demande.etat == 3 %}
-            <li class="list-group" >
-                <a href="{{ path('gseb_historique_view', {'id': demande.id}) }}">
-                {{ demande.title }}
-                </a>
-                par {{ demande.technicien }},
-                le {{ demande.date|date('d/m/Y') }}
-                <span class="d-inline-block" data-toggle="popover3" data-content="Demande refusée">
-                    <button class="btn btn-danger" style="pointer-events: none;" type="button" disabled>Etat de la demande</button>
-                </span>
-            </li>
-        <script>
-            $(document).ready(function(){
-                $('[data-toggle="popover3"]').popover();
-            });
-        </script>
-        {% endif %}
-        {% else %}
-        <li class="list-group">Pas (encore !) d'annonces</li>
+            {% if demande.etat == 2 %}
+                <li class="list-group" >
+                    <a href="{{ path('gseb_historique_view', {'id': demande.id}) }}">
+                    {{ demande.sujet }}
+                    </a>
+                    par {{ demande.contact.nom }} {{ demande.contact.prenom }},
+                    le {{ demande.date|date('d/m/Y') }}
+                        <button type="button" class="btn btn-warning" type="button" >En cours de validation</button>
+
+                </li>
+            {% endif %}
+            {% if demande.etat == 3 %}
+                <li class="list-group" >
+                    <a href="{{ path('gseb_historique_view', {'id': demande.id}) }}">
+                    {{ demande.sujet }}
+                    </a>
+                    par {{ demande.contact.nom }} {{ demande.contact.prenom }},
+                    le {{ demande.date|date('d/m/Y') }}
+                    <button type="button" class="btn btn-danger" type="button" >Demande non validée</button>
+                </li>
+            {% endif %}
+
+            {% else %}
+            <li class="list-group">Pas (encore !) d'annonces</li>
         {% endfor %}
   </ul>
 {% endblock %}
