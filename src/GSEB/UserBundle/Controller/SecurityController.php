@@ -18,7 +18,7 @@ class SecurityController extends Controller
         }
         if ($this->get('security.authorization_checker')->isGranted('ROLE_USER'))
         {
-            return $this->redirectToRoute('gseb_validation_homepage');            
+            return $this->redirectToRoute('gseb_platform_homepage');            
         }
         
     }

@@ -50,12 +50,12 @@ class __TwigTemplate_444556a3791a04883601b0b894fbf03edf1440f2963b94b1848150558f6
         <div class=\"jumbotron\">
           <h1>Bienvenue sur le site FormDGSeb</h1>
         </div>
-        <a href=\"";
-        // line 7
-        echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("gseb_platform_homepage");
-        echo "\" class=\"btn btn-primary \" role=\"button\" >Accès à la plateforme</a>
-
-        
+        <div class=\"text-center\">
+            <a href=\"";
+        // line 8
+        echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("login");
+        echo "\" class=\"btn btn-primary btn-lg \" role=\"button\" >Se connecter</a>
+        </div>   
     ";
         
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->leave($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof);
@@ -77,7 +77,7 @@ class __TwigTemplate_444556a3791a04883601b0b894fbf03edf1440f2963b94b1848150558f6
 
     public function getDebugInfo()
     {
-        return array (  55 => 7,  49 => 3,  40 => 2,  11 => 1,);
+        return array (  56 => 8,  49 => 3,  40 => 2,  11 => 1,);
     }
 
     /** @deprecated since 1.27 (to be removed in 2.0). Use getSourceContext() instead */
@@ -96,9 +96,9 @@ class __TwigTemplate_444556a3791a04883601b0b894fbf03edf1440f2963b94b1848150558f6
         <div class=\"jumbotron\">
           <h1>Bienvenue sur le site FormDGSeb</h1>
         </div>
-        <a href=\"{{ path('gseb_platform_homepage')  }}\" class=\"btn btn-primary \" role=\"button\" >Accès à la plateforme</a>
-
-        
+        <div class=\"text-center\">
+            <a href=\"{{ path('login')  }}\" class=\"btn btn-primary btn-lg \" role=\"button\" >Se connecter</a>
+        </div>   
     {% endblock %}
 ", "@GSEBCore/Core/index.html.twig", "/var/www/html/FormdGseb/src/GSEB/CoreBundle/Resources/views/Core/index.html.twig");
     }

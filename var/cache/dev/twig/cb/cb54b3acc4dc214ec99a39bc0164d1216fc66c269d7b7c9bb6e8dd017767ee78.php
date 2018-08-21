@@ -48,7 +48,7 @@ class __TwigTemplate_fd6e8c1d89b6a043a9e855571ca248418b048caffc2fb65a57595bf92ed
         // line 4
         echo "
         <div class=\"jumbotron\">
-          <h1>Ajouter un équipement</h1>
+          <h1>Création d'une demande</h1>
           
             <a class=\"btn btn-lg btn-primary\" href=\"";
         // line 8
@@ -57,7 +57,7 @@ class __TwigTemplate_fd6e8c1d89b6a043a9e855571ca248418b048caffc2fb65a57595bf92ed
           </p>
         </div>
         <div class=\"jumbotron\">
-          <h1>Modifier un équipement</h1>
+          <h1>Modification d'une demande</h1>
           
             <a class=\"btn btn-lg btn-primary\" href=\"";
         // line 14
@@ -66,7 +66,7 @@ class __TwigTemplate_fd6e8c1d89b6a043a9e855571ca248418b048caffc2fb65a57595bf92ed
           </p>
         </div>
         <div class=\"jumbotron\">
-          <h1>Supprimer un équipement</h1>
+          <h1>Suppression d'une demande</h1>
             <a class=\"btn btn-lg btn-primary\" href=\"";
         // line 19
         echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("gseb_platform_homeaction", array("action" => "delete"));
@@ -113,19 +113,19 @@ class __TwigTemplate_fd6e8c1d89b6a043a9e855571ca248418b048caffc2fb65a57595bf92ed
     {% block body %}
 
         <div class=\"jumbotron\">
-          <h1>Ajouter un équipement</h1>
+          <h1>Création d'une demande</h1>
           
             <a class=\"btn btn-lg btn-primary\" href=\"{{ path('gseb_platform_homeaction', {'action': 'add' }) }}\" role=\"button\">Ajouter &raquo;</a>
           </p>
         </div>
         <div class=\"jumbotron\">
-          <h1>Modifier un équipement</h1>
+          <h1>Modification d'une demande</h1>
           
             <a class=\"btn btn-lg btn-primary\" href=\"{{ path('gseb_platform_homeaction', {'action': 'edit' }) }}\" role=\"button\">Modifier &raquo;</a>
           </p>
         </div>
         <div class=\"jumbotron\">
-          <h1>Supprimer un équipement</h1>
+          <h1>Suppression d'une demande</h1>
             <a class=\"btn btn-lg btn-primary\" href=\"{{ path('gseb_platform_homeaction', {'action': 'delete' }) }}\" role=\"button\">Supprimer &raquo;</a>
           </p>
         </div>

@@ -73,18 +73,18 @@ class __TwigTemplate_8e56845eb1b34cd9125f91106bba6c1e5016cf965934363d320c7c92c29
     Affichage des salles disponibles :
   </p>
   <ul>
-  ";
+    ";
         // line 16
         $context['_parent'] = $context;
         $context['_seq'] = twig_ensure_traversable((isset($context["resultat"]) ? $context["resultat"] : $this->getContext($context, "resultat")));
         foreach ($context['_seq'] as $context["_key"] => $context["salle"]) {
             // line 17
-            echo "              <li class=\"list-group\" >
-              <a href=\"";
+            echo "      <li class=\"list-group\" >
+        <a href=\"";
             // line 18
-            echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("gseb_historique_view", array("id" => 1));
+            echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("gseb_platform_demande_baie", array("id_salle" => $this->getAttribute($context["salle"], "id", array()))), "html", null, true);
             echo "\" class=\"btn btn-primary \" role=\"button\" >
-                ";
+          ";
             // line 19
             echo twig_escape_filter($this->env, $this->getAttribute($context["salle"], "name", array()), "html", null, true);
             echo ", ";
@@ -92,17 +92,14 @@ class __TwigTemplate_8e56845eb1b34cd9125f91106bba6c1e5016cf965934363d320c7c92c29
             echo ", ";
             echo twig_escape_filter($this->env, $this->getAttribute($context["salle"], "location_name", array()), "html", null, true);
             echo "
-              </a> 
-              ";
-            // line 24
-            echo "                  
-              </li>
-  ";
+        </a>       
+      </li>
+    ";
         }
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['salle'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 27
+        // line 23
         echo "  </ul>
  
 
@@ -127,7 +124,7 @@ class __TwigTemplate_8e56845eb1b34cd9125f91106bba6c1e5016cf965934363d320c7c92c29
 
     public function getDebugInfo()
     {
-        return array (  106 => 27,  98 => 24,  89 => 19,  85 => 18,  82 => 17,  78 => 16,  70 => 10,  61 => 9,  50 => 6,  41 => 5,  11 => 3,);
+        return array (  103 => 23,  89 => 19,  85 => 18,  82 => 17,  78 => 16,  70 => 10,  61 => 9,  50 => 6,  41 => 5,  11 => 3,);
     }
 
     /** @deprecated since 1.27 (to be removed in 2.0). Use getSourceContext() instead */
@@ -155,17 +152,13 @@ class __TwigTemplate_8e56845eb1b34cd9125f91106bba6c1e5016cf965934363d320c7c92c29
     Affichage des salles disponibles :
   </p>
   <ul>
-  {% for salle in resultat %}
-              <li class=\"list-group\" >
-              <a href=\"{{ path('gseb_historique_view', {'id': 1 })  }}\" class=\"btn btn-primary \" role=\"button\" >
-                {{ salle.name }}, {{ salle.id }}, {{ salle.location_name }}
-              </a> 
-              {# <a href=\"{{ path('gseb_platform_demande_baie', {'id_salle': salle.id })  }}\" class=\"btn btn-primary \" role=\"button\" >
-                {{ salle.name }}, {{ salle.id }}, {{ salle.location_name }}
-              </a> #}
-                  
-              </li>
-  {% endfor %}
+    {% for salle in resultat %}
+      <li class=\"list-group\" >
+        <a href=\"{{ path('gseb_platform_demande_baie', {'id_salle': salle.id })  }}\" class=\"btn btn-primary \" role=\"button\" >
+          {{ salle.name }}, {{ salle.id }}, {{ salle.location_name }}
+        </a>       
+      </li>
+    {% endfor %}
   </ul>
  
 

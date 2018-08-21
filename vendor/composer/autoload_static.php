@@ -17,6 +17,7 @@ class ComposerStaticInit75eab13db91b3886254f2c98a590e3e1
         'bd9634f2d41831496de0d3dfe4c94881' => __DIR__ . '/..' . '/symfony/polyfill-php56/bootstrap.php',
         '023d27dca8066ef29e6739335ea73bad' => __DIR__ . '/..' . '/symfony/polyfill-php70/bootstrap.php',
         'ac3cdd7bcaaf7c7d2e6830f008634c6d' => __DIR__ . '/..' . '/symfony/symfony/src/Symfony/Component/VarDumper/Resources/functions/dump.php',
+        '3b85b919704e8cc6fe7f5252f4dfe3c6' => __DIR__ . '/../..' . '/src/GSEB/PlatformBundle/Racktables/QueryRacktables.php',
     );
 
     public static $prefixLengthsPsr4 = array (

@@ -190,6 +190,16 @@ class appDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
                     return $this->mergeDefaults(array_replace($matches, array('_route' => 'gseb_platform_demande_properties')), array (  '_controller' => 'GSEB\\PlatformBundle\\Controller\\DemandeController::listPropertiesAction',));
                 }
 
+                // gseb_platform_demande_attributs
+                if (0 === strpos($pathinfo, '/platform/demande/attributs') && preg_match('#^/platform/demande/attributs/(?P<id_demande>[^/]++)$#sD', $pathinfo, $matches)) {
+                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'gseb_platform_demande_attributs')), array (  '_controller' => 'GSEB\\PlatformBundle\\Controller\\DemandeController::listAttributsAction',));
+                }
+
+                // gseb_platform_demande_rackspace
+                if (0 === strpos($pathinfo, '/platform/demande/rackspace') && preg_match('#^/platform/demande/rackspace/(?P<id_demande>[^/]++)$#sD', $pathinfo, $matches)) {
+                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'gseb_platform_demande_rackspace')), array (  '_controller' => 'GSEB\\PlatformBundle\\Controller\\DemandeController::rackspaceAction',));
+                }
+
                 // gseb_platform_demande_recap
                 if ('/platform/demande/recap' === $pathinfo) {
                     return array (  '_controller' => 'GSEB\\PlatformBundle\\Controller\\DemandeController::demandeRecapAction',  '_route' => 'gseb_platform_demande_recap',);

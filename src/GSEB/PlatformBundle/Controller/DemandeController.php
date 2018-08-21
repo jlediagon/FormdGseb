@@ -2,6 +2,7 @@
 
 namespace GSEB\PlatformBundle\Controller;
 
+require_once("/var/www/html/FormdGseb/src/GSEB/PlatformBundle/Racktables/QueryRacktables.php");
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -9,6 +10,7 @@ use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Doctrine\DBAL\Driver\Connection;
 use Symfony\Component\HttpFoundation\Session\Session;
 use Doctrine\ORM\EntityManagerInterface;
+use GSEB\PlatformBundle\Racktables\QueryRacktables;
 
 //--Nécessaire au formulaire
 use GSEB\PlatformBundle\Entity\Demande;
@@ -21,70 +23,15 @@ use GSEB\PlatformBundle\Form\DemandeType;
 use Symfony\Component\Form\Extension\Core\Type\FormType;
 
 class DemandeController extends Controller
-{
+{        
     public function listSalleAction()
     {
-        /*---------------------------------------/
-        /            Connexion BDD               /
-        /---------------------------------------*/
+        // /*---------------------------------------/
+        // /            Connexion BDD               /
+        // /---------------------------------------*/
         $conn = $this->get('database_connection');
-
-        /*---------------------------------------/
-        /        Partie Requête BDD              /
-        /---------------------------------------*/
-        $salles = $conn->fetchAll
-        (
-            'SELECT * '.
-            'from Row'
-        );
-        $demande = new Demande();
-        $object = new Object();
-        $contact = new Contact();
-        $attr1 = new Attribut();
-        $attr2 = new Attribut();
-        $rackspace = new Rackspace();
         
-        //--------Object---------
-        $object->setObjtypeId(56);
-        $object->setName("Switch 203NX");
-
-        //--------Demande---------
-        $demande->setAction(1);
-        $demande->setSujet("Installation d'un switch baie 104");
-        $demande->setComment("No comment for this object");
-        
-        //--------Contact---------
-        $contact->setNom("Durand");
-        $contact->setPrenom("Jean-Yves");
-        $contact->setMail("jy.dur@mail.com");
-        $contact->setTelephone("0658589623");
-        $contact->setSociete("Nutanix");
-        $contact->setFonction("ArchiRes");
-        
-        //--------Attribut 1---------
-        $attr1->setAttrId(42);
-        $attr1->setValue("Cisco ver. XXXX");
-        //--------Attribut 2---------
-        $attr2->setAttrId(16);
-        $attr2->setValue("1000 kW/h");
-        
-        //--------RackSpace---------
-        $rackspace->setRackId(16);
-        $rackspace->setUnitNo(12);
-        $rackspace->setAtom(1);
-        
-        //--------Liaisons---------
-        $rackspace->setObject($object);
-        $attr1->setObject($object);
-        $attr2->setObject($object);
-        $demande->setObject($object);        
-        $demande->setContact($contact);
-
-        $em = $this->getDoctrine()->getManager('demande');
-        $em->persist($object);        
-        $em->persist($demande);
-
-        $em->flush();
+        $salles = querySalle($conn);
 
         return $this->render('@GSEBPlatform/Demande/listSalle.html.twig',array('resultat' => $salles));
     }
@@ -98,15 +45,7 @@ class DemandeController extends Controller
         $session= $request->getSession();   
 
         $session->set('Salle',$id_salle);
-        /*---------------------------------------/
-        /        Partie Requête BDD              /
-        /---------------------------------------*/
-        $baies = $conn->fetchAll
-        (
-            'SELECT * '.
-            'FROM Rack '.
-            'WHERE row_id='.$id_salle.''
-        );
+        $baies = queryBaie($conn, $id_salle);
 
         return $this->render('@GSEBPlatform/Demande/listBaie.html.twig',array('resultat' => $baies));
     }
@@ -122,71 +61,155 @@ class DemandeController extends Controller
         /*---------------------------------------/
         /        Partie Requête BDD              /
         /---------------------------------------*/
-        $object_type = $conn->fetchAll
-        (
-            'SELECT * '.
-            'FROM Dictionary '.
-            'WHERE chapter_id=1'
-        );
+        $object_type = queryListObjType ($conn);
         return $this->render('@GSEBPlatform/Demande/listObject.html.twig',array('resultat' => $object_type));
     }
 
     public function listPropertiesAction($id_objtype,Request $request)
     {
         $session= $request->getSession();           
-        $demande = new Demande();
-        //$id_objtype = 7;
-        /*---------------------------------------/
-        /            Connexion BDD               /
-        /      Récupération de la session        /
-        /---------------------------------------*/        
-        $conn = $this->get('database_connection');
-        /*---------------------------------------/
-        /        Partie Requête BDD              /
-        /---------------------------------------*/ 
-        if ($id_objtype != 'add' and $id_objtype != 'edit' and $id_objtype != 'delete')
-        {
-            $caracobject = $conn->fetchAll
-            (
-                'SELECT a.id, a.name, a.type, am.chapter_id '.
-                'FROM Attribute a '.
-                'JOIN AttributeMap am '.
-                'ON a.id=am.attr_id '.
-                'WHERE am.objtype_id='.$id_objtype.' '
-            );
-        }
-        $caracobject = 0;
+        $demande = new Demande();   
         /*---------------------------------------/
         /          Partie Formulaire             /
         /---------------------------------------*/        
-        $formDemande = $this->get('form.factory')->create(DemandeType::class, $demande,[
-            'action' => $session->get('Action'),
-            'idObjType' => $id_objtype,
-            'idBaie'    => $session->get('Baie'),
-            'attributs' => $caracobject,
-
-        ]);
+        $formDemande = $this
+            ->get('form.factory')
+            ->create(DemandeType::class, $demande,[
+                'action' => $session->get('Action'),
+                'idObjType' => $id_objtype,
+            ]);
         /*---------------------------------------/
         /        Validation du formulaire        /
         /---------------------------------------*/   
         if ($request->isMethod('POST')) {
-            echo "BONJOUR JE SUIS UNE REQUETE POST";
-            return $this->redirectToRoute('gseb_platform_homepage');
-            
             $formDemande->handleRequest($request);
             if ($formDemande->isValid()) {
                 $em = $this->getDoctrine()->getManager('demande');
                 $em->persist($demande);
                 $em->flush();
                 //$request->getSession()->getFlashBag()->add('notice', 'Demande bien enregistrée.');
-                return $this->redirectToRoute('gseb_platform_homepage');
+                return $this->redirectToRoute('gseb_platform_demande_attributs',array('id_demande' => $demande->getId()));
             }        
         }
         return $this->render('@GSEBPlatform/Demande/formTest.html.twig',array(
             'form' => $formDemande->createView(),
         ));
     }
-    
+    public function listAttributsAction ($id_demande,Request $request)
+    {
+        /*---------------------------------------/
+        /            Connexion BDD               /
+        /      Récupération de la session        /
+        /---------------------------------------*/        
+        $conn = $this->get('database_connection');
+        $repo = $this
+            ->getDoctrine()
+            ->getManager('demande')
+            ->getRepository('GSEBPlatformBundle:Demande')
+        ;
+        $demande = $repo->find($id_demande);
+        $id_objtype = $demande->getObject()->getObjtypeId();
+        $object = $demande->getObject();
+
+        /*---------------------------------------/
+        /        Partie Requête BDD              /
+        /---------------------------------------*/ 
+        $caracobject = queryAttrObj($conn, $id_objtype);
+        $nbcaract = count($caracobject);
+
+        /*---------------------------------------/
+        /        Validation du formulaire        /
+        /---------------------------------------*/  
+        if ($request->isMethod('POST')) {
+            $em = $this->getDoctrine()->getManager('demande');
+            
+            for ($i=1;$i<$nbcaract;$i++)
+            {
+                $attribut = new Attribut();
+                $value = $request->request->get($caracobject[$i]['id'],'none');    
+                $attribut->setValue($value);
+                $attribut->setAttrId($caracobject[$i]['id']);
+                $attribut->setObject($object);
+                $em->persist($attribut);
+                $em->flush();             
+            }
+            return $this->redirectToRoute('gseb_platform_demande_rackspace',array('id_demande' => $demande->getId()));
+        }
+        return $this->render('@GSEBPlatform/Demande/listAttributs.html.twig',array(
+            'resultat'=>$caracobject,
+            'demande' =>$demande
+        ));        
+    }
+
+    public function rackspaceAction($id_demande, Request $request)
+    {
+        $session= $request->getSession();   
+        $id_baie = $session->get('Baie');
+
+        $conn = $this->get('database_connection');
+        $repo = $this
+            ->getDoctrine()
+            ->getManager('demande')
+            ->getRepository('GSEBPlatformBundle:Demande')
+        ;
+        $demande = $repo->find($id_demande);        
+        $object = $demande->getObject();
+
+        $height = queryRackHeight($conn, $id_baie);
+        
+        $rackspace = queryRackspaceAlloc($conn, $id_baie);
+
+        if ($request->isMethod('POST')) {
+            $em = $this->getDoctrine()->getManager('demande');
+            //rajouter les isset $_POST
+            if (isset($_POST['interior']))
+            {
+                foreach( $_POST['interior'] as $value )
+                {
+                    $rackspace = new Rackspace();
+                    $rackspace->setUnitNo($value);
+                    $rackspace->setAtom(1);
+                    $rackspace->setRackId($id_baie);
+                    $rackspace->setObject($object);                
+                    $em->persist($rackspace);
+                    $em->flush();         
+                }
+            }
+            if (isset($_POST['front']))
+            {
+                foreach( $_POST['front'] as $value )
+                {
+                    $rackspace = new Rackspace();
+                    $rackspace->setUnitNo($value);
+                    $rackspace->setAtom(2);
+                    $rackspace->setRackId($id_baie);
+                    $rackspace->setObject($object);                
+                    $em->persist($rackspace);
+                    $em->flush();                  
+                }
+            }
+            if (isset($_POST['rear']))
+            {
+                foreach( $_POST['rear'] as $value )
+                {
+                    $rackspace = new Rackspace();
+                    $rackspace->setUnitNo($value);
+                    $rackspace->setAtom(3);
+                    $rackspace->setRackId($id_baie);
+                    $rackspace->setObject($object);                
+                    $em->persist($rackspace);
+                    $em->flush();         
+                }
+            }
+            return $this->redirectToRoute('gseb_platform_demande_success',array('id_demande' => $demande->getId()));     
+        }
+        return $this->render('@GSEBPlatform/Demande/rackspace.html.twig',array(
+            'demande' =>$demande,
+            'id_rack' =>$id_baie,
+            'height' => $height,
+            'rackspace' => $rackspace,
+        ));
+    }
     public function demandeRecapAction(Request $request)
     {
         /*---------------------------------------/

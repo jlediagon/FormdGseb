@@ -69,7 +69,6 @@ class Demande
 
     public function __construct()
     {
-        //$this->action = $action;
         $this->etat = 2;
         $this->date = new \Datetime();
     }

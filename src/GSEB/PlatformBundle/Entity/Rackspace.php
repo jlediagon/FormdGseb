@@ -13,7 +13,7 @@ use Doctrine\ORM\Mapping as ORM;
 class Rackspace
 {
     /**
-     * @ORM\ManyToOne(targetEntity="GSEB\PlatformBundle\Entity\Rackspace", cascade={"persist"})
+     * @ORM\ManyToOne(targetEntity="GSEB\PlatformBundle\Entity\Object", cascade={"persist"})
      * @ORM\JoinColumn(nullable=false)
      */
     private $object;   

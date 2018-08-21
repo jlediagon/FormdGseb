@@ -5,8 +5,3 @@ gseb_core_home:
     defaults:
         _controller: GSEBCoreBundle:Core:index
 
-# Intéressant pour éventuellement reporter des bugs
-# oc_core_contact:
-#     path: /contact
-#     defaults:
-#         _controller: OCCoreBundle:Core:contact

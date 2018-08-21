@@ -28,6 +28,14 @@ gseb_platform_demande_properties:
     path:     /demande/object/{id_objtype}
     defaults: { _controller: GSEBPlatformBundle:Demande:listProperties }
 
+gseb_platform_demande_attributs:
+    path:     /demande/attributs/{id_demande}
+    defaults: { _controller: GSEBPlatformBundle:Demande:listAttributs }
+
+gseb_platform_demande_rackspace:
+    path:     /demande/rackspace/{id_demande}
+    defaults: { _controller: GSEBPlatformBundle:Demande:rackspace }
+
 gseb_platform_demande_recap:
     path:     /demande/recap
     defaults: { _controller: GSEBPlatformBundle:Demande:demandeRecap }

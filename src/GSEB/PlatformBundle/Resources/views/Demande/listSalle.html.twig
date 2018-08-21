@@ -13,17 +13,13 @@
     Affichage des salles disponibles :
   </p>
   <ul>
-  {% for salle in resultat %}
-              <li class="list-group" >
-              <a href="{{ path('gseb_historique_view', {'id': 1 })  }}" class="btn btn-primary " role="button" >
-                {{ salle.name }}, {{ salle.id }}, {{ salle.location_name }}
-              </a> 
-              {# <a href="{{ path('gseb_platform_demande_baie', {'id_salle': salle.id })  }}" class="btn btn-primary " role="button" >
-                {{ salle.name }}, {{ salle.id }}, {{ salle.location_name }}
-              </a> #}
-                  
-              </li>
-  {% endfor %}
+    {% for salle in resultat %}
+      <li class="list-group" >
+        <a href="{{ path('gseb_platform_demande_baie', {'id_salle': salle.id })  }}" class="btn btn-primary " role="button" >
+          {{ salle.name }}, {{ salle.id }}, {{ salle.location_name }}
+        </a>       
+      </li>
+    {% endfor %}
   </ul>
  
 

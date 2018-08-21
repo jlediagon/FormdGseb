@@ -16,4 +16,5 @@ return array(
     'bd9634f2d41831496de0d3dfe4c94881' => $vendorDir . '/symfony/polyfill-php56/bootstrap.php',
     '023d27dca8066ef29e6739335ea73bad' => $vendorDir . '/symfony/polyfill-php70/bootstrap.php',
     'ac3cdd7bcaaf7c7d2e6830f008634c6d' => $vendorDir . '/symfony/symfony/src/Symfony/Component/VarDumper/Resources/functions/dump.php',
+    '3b85b919704e8cc6fe7f5252f4dfe3c6' => $baseDir . '/src/GSEB/PlatformBundle/Racktables/QueryRacktables.php',
 );
